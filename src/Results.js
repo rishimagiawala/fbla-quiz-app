@@ -17,28 +17,13 @@ export default function Results(props) {
         canvas.toBlob(function(blob) {
           var userQuiz = storageRef.child('pastQuizAttempts/' + props.googleUser.uid + '.png');
           userQuiz.put(blob).then(function(snapshot) {
-            console.log('Uploaded a blob or file!');
+            console.log('Uploaded user quiz');
           });
          
 
         })
     });
 
-  
-
-      // firebase.database(userDatabase).ref('users/' + props.googleUser.uid).update({
-      //  recentResult: {
-      //    grade: props.grade,
-      //    results: JSON.parse(JSON.stringify(props.results))
-      //  }
-       
-      // }, function(error) {
-      //   if (error) {
-      //     console.log(error)
-      //   } else {
-      //     console.log('user updated in database')
-      //   }
-      // });
     }
   }, [props.results , props.grade]);
 

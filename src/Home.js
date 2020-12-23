@@ -2,7 +2,9 @@ import logo from "./logo.svg";
 import "./Home.css";
 import fblalogo from "./images/fblalogo.svg";
 import React, { useState, useReducer, useEffect } from "react";
-import { signInWithGoogle } from "./cloud/firebase.js";
+import { signInWithGoogle, storageRef } from "./cloud/firebase.js";
+import { saveAs } from 'file-saver';
+
 function Home(props) {
   const [name, setName] = useState("");
   const [inputanimation, setinputAnimation] = useState(
@@ -14,6 +16,46 @@ function Home(props) {
   const [ignored, forceUpdate] = useReducer((x) => x + 1, 0);
   const [inputIcon, setInputIcon] = useState("fas fa-user");
 
+  function seePastQuiz() {
+    storageRef
+      .child("pastQuizAttempts/" + googleUser.uid + ".png")
+      .getDownloadURL()
+      .then(function (url) {
+        // `url` is the download URL for 'images/stars.jpg'
+
+        // This can be downloaded directly:
+        var xhr = new XMLHttpRequest();
+        xhr.responseType = "blob";
+        xhr.onload = function (event) {
+          var blob = xhr.response;
+          saveAs(blob, name +'.png'); 
+        };
+        xhr.open("GET", url);
+        xhr.send();
+      })
+      .catch((error) => {
+        switch (error.code) {
+          case 'storage/object-not-found':
+            console.log('Not found')
+            window.alert('No Past Attempts Were Found. Click "Begin Trivia! to take the Quiz!')
+            break;
+      
+          case 'storage/unauthorized':
+            // User doesn't have permission to access the object
+            break;
+      
+          case 'storage/canceled':
+            // User canceled the upload
+            break;
+
+          case 'storage/unknown':
+            // Unknown error occurred, inspect the server response
+            break;
+        }
+
+      });
+  }
+
   function updateName(event) {
     setName(event.target.value);
   }
@@ -23,7 +65,7 @@ function Home(props) {
       setGoogleUser(user);
       setName(user.displayName);
       setSignedIn(true);
-      props.updateGoogleUser(user)
+      props.updateGoogleUser(user);
       setInputIcon("has-text-danger fab fa-google");
     }
   }
@@ -67,7 +109,7 @@ function Home(props) {
         setName("");
         setSignedIn(false);
         setInputIcon("fas fa-user");
-        props.updateGoogleUser(null)
+        props.updateGoogleUser(null);
       }}
       class="has-text-danger button is-medium gsignbutton animate__animated animate__bounceInRight"
     >
@@ -76,10 +118,8 @@ function Home(props) {
   );
 
   const showRecentTakeButton = (
-<button
-      onClick={()=>{
-        // props.setSeePastQuiz(true)
-      }}
+    <button
+      onClick={() => {seePastQuiz()}}
       class="has-text-danger button is-medium showRecentTakeButton  animate__animated animate__bounceInRight"
     >
       <span class="icon">
@@ -87,10 +127,7 @@ function Home(props) {
       </span>
       <span>Show Recent Attempt</span>
     </button>
-
-
-
-  )
+  );
 
   return (
     <div class="container home_maindiv">
