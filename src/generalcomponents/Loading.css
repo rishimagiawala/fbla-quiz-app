@@ -1,0 +1,97 @@
+
+
+.component_loading.progressbar-mobile{
+    width: 75%;
+    position: absolute;
+
+
+  left: 50%;
+
+
+  top: 50%;
+
+
+  transform: translate(-50%, -50%);
+
+
+  
+
+
+  padding: 10px;
+   
+  display: flex;
+justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  font-size: xx-large;
+  text-align: center;
+  
+}
+.component_loading .image{
+    margin-bottom: 2rem;
+}
+.component_loading figure{
+
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+.loading:after {
+  content: '.';
+  animation: dots 1s steps(5, end) infinite;
+  font-size: 1.5em;
+}
+
+@keyframes dots {
+  0%, 20% {
+    color: rgba(0,0,0,0);
+    text-shadow:
+      .25em 0 0 rgba(0,0,0,0),
+      .5em 0 0 rgba(0,0,0,0);}
+  40% {
+    color: white;
+    text-shadow:
+      .25em 0 0 rgba(0,0,0,0),
+      .5em 0 0 rgba(0,0,0,0);}
+  60% {
+    text-shadow:
+      .25em 0 0 white,
+      .5em 0 0 rgba(0,0,0,0);}
+  80%, 100% {
+    text-shadow:
+      .25em 0 0 white,
+      .5em 0 0 white;}}
+
+.component_loading.progressbar-desktop{
+    width: 30rem;
+    position: absolute;
+
+
+  left: 50%;
+
+
+  top: 50%;
+
+
+  transform: translate(-50%, -50%);
+
+
+  
+
+
+  padding: 10px;
+   
+  display: flex;
+justify-content: center;
+  align-items: center;
+  /* background-color: thistle; */
+  font-size: xx-large;
+  background-color: transparent;
+  text-align: center;
+  
+}
+.loading_maindiv{
+  min-height: 100vh;
+  min-width: 100vw;
+  background-color: transparent;
+}

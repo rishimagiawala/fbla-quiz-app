@@ -1,0 +1,57 @@
+.mc_maindiv{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+   /* background-color: lawngreen; */
+    
+    min-height: 100vh;
+    
+}
+.mc_box{
+   
+    
+    border-radius: 0;
+    
+}
+hr{
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+    
+}
+.mc_button{
+    width: 100%;
+    white-space:normal !important;
+word-wrap:break-word;
+height: auto;
+
+
+}
+.mc_button.animate__hinge{
+    animation-delay: 2.5s;
+    animation-duration: 2s;
+}
+.mc_button:disabled{
+    opacity: 1;
+
+}
+.mc_box-mobile{
+    height: 1vh;
+    text-align: center;
+    
+    padding-bottom: 100%;
+    /* padding-right: 2%;
+    padding-left: 2%;
+    padding-top: 2%; */
+    margin-top: 5%;
+    
+}
+
+.mc_subtitle{
+    padding-top: 5%;
+}

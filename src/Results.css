@@ -1,0 +1,52 @@
+.res_userDiv{
+   
+    display: flex;
+    flex-direction: column;
+   
+
+}
+.res_userimg{
+    margin: 2vh auto;
+    height: 25vh;
+    width: 25vh;
+   
+}
+.res_userName{
+    margin-top: 2vh;
+    text-align: center;
+  
+}
+.res_maindiv{
+    display: flex;
+    flex-direction: column;
+   
+}
+.res_topButton{
+margin: 0 1vh
+}
+.res_topButtons{
+    margin-top: 1vh;
+    display:flex;
+    flex-direction: row;
+    margin: 2vh auto;
+}
+.res_questionPhotos{
+    display:flex;
+    flex-direction:column;
+    
+   
+    margin: 3vh auto
+}
+.res_questionImage{
+    
+}
+.res_questionImageDiv{
+    width: fit-content;
+    margin: 1% auto;
+}
+@media print { 
+    .noprint { 
+       visibility: hidden; 
+       display:none;
+    } 
+ } 
