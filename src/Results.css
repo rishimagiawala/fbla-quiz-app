@@ -19,6 +19,7 @@
 .res_maindiv{
     display: flex;
     flex-direction: column;
+    
    
 }
 .res_topButton{
@@ -37,9 +38,7 @@ margin: 0 1vh
    
     margin: 3vh auto
 }
-.res_questionImage{
-    
-}
+
 .res_questionImageDiv{
     width: fit-content;
     margin: 1% auto;
@@ -50,3 +49,6 @@ margin: 0 1vh
        display:none;
     } 
  } 
+ .res_fakediv{
+    animation-duration: 1.5s;
+ }

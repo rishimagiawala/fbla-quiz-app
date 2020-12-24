@@ -125,6 +125,9 @@ function Home(props) {
       <span class="icon">
         <i class="has-text-danger fab fa-google"></i>
       </span>
+      <span class="icon">
+      <i class="fas fa-file-image"></i>
+      </span>
       <span>Show Recent Attempt</span>
     </button>
   );
