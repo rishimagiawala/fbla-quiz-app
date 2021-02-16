@@ -3,6 +3,7 @@ import MultipleChoice from './MultipleChoice'
 import './QuizHandler.css'
 import fblalogo from '../../images/fblalogo.svg'
 import FillInTheBlank from './FillInTheBlank'
+import Dropdown from './Dropdown'
 
 
 function QuizHandler(props){
@@ -63,7 +64,8 @@ else {
 const samplemc = props.questions.map((value,index,arr)=>{
   if(arr[index].type == 'mc'){
 
-return (<MultipleChoice key={currentQuestion} nextQuestion={nextQuestion} question={arr[index].question} options={arr[index].options} answer={arr[index].answer}/>)
+// return (<MultipleChoice key={currentQuestion} nextQuestion={nextQuestion} question={arr[index].question} options={arr[index].options} answer={arr[index].answer}/>)
+return (<Dropdown key={currentQuestion} nextQuestion={nextQuestion} question={arr[index].question} options={arr[index].options} answer={arr[index].answer}/>)
   }
   else if(arr[index].type == 'fitb')
   
