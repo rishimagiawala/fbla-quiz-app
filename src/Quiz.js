@@ -47,7 +47,7 @@ function Quiz(props) {
     for (var i = 0; i < numOfQuestions; i++) indexarr.push(i);
     indexarr = shuffle(indexarr);
 
-    for (var i = 0; i < numOfQuestions; i++) {
+    for (var i = 0; i < 5; i++) {
       firebase
         .database()
         .ref("questions/" + indexarr[i])
