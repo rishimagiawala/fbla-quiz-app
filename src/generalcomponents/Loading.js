@@ -2,6 +2,8 @@ import React from "react";
 import "./Loading.css";
 import loading from "../images/loading.svg";
 
+
+//Simple loading component that is shown while the quiz is being generated
 function Loading(props) {
   return (
     <div class="loading_maindiv">

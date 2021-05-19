@@ -23,7 +23,8 @@ function App() {
     
   }
   
-  const stuff = (
+  const main = (
+    //css transition from a css library that provides a nice fade in animation between the Home and Quiz Components
     <CSSTransition in={startQuiz} classNames="appanim" timeout={1200}>
       {!startQuiz ? (
         <Home
@@ -42,7 +43,7 @@ function App() {
     </CSSTransition>
   );
   return <div class="app_maindiv">
-    {stuff}
+    {main}
     </div>;
 }
 

@@ -7,8 +7,7 @@ import html2canvas from "html2canvas";
 import { saveAs } from 'file-saver';
 
 export default function Results(props) {
-  const [grade, setGrade] = useState(props.grade)
-  const [results, setResults] = useState(props.results)
+  
   const refResult = useRef()
   useEffect(() => {
     console.log(props.results)

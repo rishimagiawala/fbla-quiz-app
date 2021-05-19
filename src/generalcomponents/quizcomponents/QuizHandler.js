@@ -1,9 +1,7 @@
 import React, { useState, useReducer, useEffect } from 'react'
 import MultipleChoice from './MultipleChoice'
 import './QuizHandler.css'
-import fblalogo from '../../images/fblalogo.svg'
 import FillInTheBlank from './FillInTheBlank'
-import Dropdown from './Dropdown'
 
 
 function QuizHandler(props){
@@ -15,20 +13,12 @@ const[questionPhotos, setQuestionPhotos] = useState([])
  
 
 
-useEffect(()=>{
 
+//A function that is passed to each question component through props, when this is called it will check to see if the question was answered correctly and update the user's score
 
-}
-
-
-
-
-,[])
 
 function nextQuestion(answer , image){
   var right = numberRight
-  // console.log(image)
-//  console.log(answer)
 setQuestionPhotos((prevState)=>{
   var tempArray = prevState
   tempArray.push(
@@ -41,6 +31,7 @@ setQuestionPhotos((prevState)=>{
   return tempArray
 })
   if(currentQuestion < questions.length-1){
+    //goes to the next question in the array of questions.
 setCurrentQuestion(currentQuestion + 1)
 
 if(answer == true){
@@ -60,12 +51,12 @@ else {
 
 }
 
-
+//For each question objects from the JSON, depending on the type parameter specified it will map it to the proper component
 const samplemc = props.questions.map((value,index,arr)=>{
   if(arr[index].type == 'mc'){
 
-// return (<MultipleChoice key={currentQuestion} nextQuestion={nextQuestion} question={arr[index].question} options={arr[index].options} answer={arr[index].answer}/>)
-return (<Dropdown key={currentQuestion} nextQuestion={nextQuestion} question={arr[index].question} options={arr[index].options} answer={arr[index].answer}/>)
+return (<MultipleChoice key={currentQuestion} nextQuestion={nextQuestion} question={arr[index].question} options={arr[index].options} answer={arr[index].answer}/>)
+// return (<Dropdown key={currentQuestion} nextQuestion={nextQuestion} question={arr[index].question} options={arr[index].options} answer={arr[index].answer}/>)
   }
   else if(arr[index].type == 'fitb')
   

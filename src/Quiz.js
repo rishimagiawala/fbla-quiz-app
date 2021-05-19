@@ -3,11 +3,9 @@ import React, { useState, useReducer, useEffect } from "react";
 import Loading from "./generalcomponents/Loading";
 import firebase from "./cloud/firebase";
 import QuizHandler from "./generalcomponents/quizcomponents/QuizHandler";
-import { CSSTransition } from "react-transition-group";
 import Results from './Results'
 
 function Quiz(props) {
-  // const firebaseApp = firebase.apps[0];
   const [recieved, setRecieved] = useState(false);
   const [questions, setQuestions] = useState([]);
   const [loadingtitle, setLoadingTitle] = useState("Generating Quiz");
@@ -15,6 +13,7 @@ function Quiz(props) {
   const [results, setResults] = useState();
   const [quizOver, setQuizOver] = useState(false);
 
+  //To make the quiz starting seem nicer I increased the loading time of the Loading component to 2 secs to make it look nice and offer a good transition.
   function startQuiz() {
     const timer = setTimeout(() => {
       setRecieved(!recieved);
@@ -22,6 +21,7 @@ function Quiz(props) {
     return () => clearTimeout(timer);
   }
 
+  //A function that shuffles the values of the passed array 
   function shuffle(arr) {
     return arr
       .map(function (val, i) {
@@ -45,6 +45,7 @@ function Quiz(props) {
 
     var indexarr = [];
     for (var i = 0; i < numOfQuestions; i++) indexarr.push(i);
+    //I call the function here to shuffle the values in the array to make the quiz random and also make sure that there are no duplicates
     indexarr = shuffle(indexarr);
 
     for (var i = 0; i < 5; i++) {

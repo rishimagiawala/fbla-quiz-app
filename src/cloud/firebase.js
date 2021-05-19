@@ -1,5 +1,5 @@
 import firebase from 'firebase'
-
+//Creates and initializes a Firebase app instance at app startup
 firebase.initializeApp( {
     apiKey: "AIzaSyDHrtlWgDCBdViTQu2meJK1u0TsIyGicqY",
     authDomain: "fblaproject-f041f.firebaseapp.com",
@@ -11,17 +11,21 @@ firebase.initializeApp( {
     measurementId: "G-VXVPY0NWN2"
   });
 
+  //creating an exportable database object that is connected to the Firebase Realtime Database(However, I default to using firebase.database() anyways)
   export const userDatabase = firebase.initializeApp({
     databaseURL:'https://fblatriviausers.firebaseio.com/'
   }, 'userDatabase')
   
+  //creating an auth object for Firebase Google Sign In Functionality
   export const auth = firebase.auth();
 const googleProvider = new firebase.auth.GoogleAuthProvider()
 
+//SignInWithGoogle function that is provided in Google Firebase Docs.
 export const signInWithGoogle = (googleSignIn) => {
   auth.signInWithPopup(googleProvider).then((res) => {
     
     firebase.database(userDatabase).ref('users/' + res.user.uid).once('value').then((snapshot) => {
+      //Checking to see if the user already exists within the database. If not, then it will populate it with user's google info
      if(!snapshot.val()){
       firebase.database(userDatabase).ref('users/' + res.user.uid).set({
         username: res.user.displayName,
@@ -53,7 +57,7 @@ export const signInWithGoogle = (googleSignIn) => {
   })
 
 }
-
+// storage object for storing the png of a user's  last attempt(However I default to using firebase.storage() anyways)
 export var storageRef = firebase.storage().ref();
 
 

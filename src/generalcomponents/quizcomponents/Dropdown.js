@@ -1,10 +1,10 @@
 import "./Dropdown.css";
-import React, { useState, useReducer, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import domtoimage from "dom-to-image";
-import html2canvas from "html2canvas";
 
+//This component is not included within the final production due to submission requirements
 function Dropdown(props) {
-  const [question, setQuestion] = useState(props.question);
+ 
   const [correctAnswer, setcorrectAnswer] = useState();
   const [optionsColor, setOptionsColor] = useState("is-primary is-outlined");
   const [answerColor, setAnswerColor] = useState("is-primary is-outlined");
@@ -81,7 +81,7 @@ function Dropdown(props) {
         <div id="want" ref={boxRef} class="mc_box box">
           <h2 class="title is-2">{props.question}</h2>
           <hr />
-          {/* <div class="buttons mc_buttons are-large column">{optionButtons}</div> */}
+         
           <div class="dropdown">
   <div class="dropdown-trigger">
     <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">

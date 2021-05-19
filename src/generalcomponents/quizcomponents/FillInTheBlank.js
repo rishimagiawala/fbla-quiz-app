@@ -12,6 +12,7 @@ function FillInTheBlank(props) {
   const [transition, setTransition] = useState("animate__fadeIn");
   const boxRef = useRef();
 
+  //simple function that gets the userInput with the correct answer that is passed to the component through props
   function answerChecker() {
     if (userInput.toLowerCase() == answer.toLowerCase()) {
       setUserInputColor(
@@ -27,7 +28,7 @@ function FillInTheBlank(props) {
     }
     setDisabledStatus(true);
   }
-
+//function that is called to move on to the next question
   function exitQuestion() {
     domtoimage
       .toPng(boxRef.current)
@@ -42,7 +43,7 @@ function FillInTheBlank(props) {
 
     setTransition("animate__fadeOut");
   }
-
+//A Next button that only appears once the user has answered a question
   const nextButton = disabledStatus ? (
     <button
       onClick={exitQuestion}
